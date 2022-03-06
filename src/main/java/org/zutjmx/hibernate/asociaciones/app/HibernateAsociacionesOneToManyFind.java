@@ -32,6 +32,7 @@ public class HibernateAsociacionesOneToManyFind {
             entityManager.getTransaction().commit();
 
             System.out.println(cliente);
+
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
             e.printStackTrace();
