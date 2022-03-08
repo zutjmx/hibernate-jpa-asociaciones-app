@@ -30,11 +30,19 @@ public class Cliente {
             uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
     private List<Direccion> direcciones;
 
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "cliente")
+    private List<Factura> facturas;
+
+    @OneToOne
+    @JoinColumn(name = "cliente_detalle_id")
+    private ClienteDetalle clienteDetalle;
+
     public Auditoria getAuditoria() {
         return auditoria;
     }
 
     public Cliente() {
+        facturas = new ArrayList<>();
         direcciones = new ArrayList<>();
     }
 
@@ -50,6 +58,14 @@ public class Cliente {
         this.nombre = nombre;
         this.apellido = apellido;
         this.formaPago = formaPago;
+    }
+
+    public ClienteDetalle getClienteDetalle() {
+        return clienteDetalle;
+    }
+
+    public void setClienteDetalle(ClienteDetalle clienteDetalle) {
+        this.clienteDetalle = clienteDetalle;
     }
 
     public Long getId() {
@@ -96,6 +112,25 @@ public class Cliente {
         this.direcciones = direcciones;
     }
 
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+    public Cliente addFactura(Factura factura) {
+        this.facturas.add(factura);
+        factura.setCliente(this);
+        return this;
+    }
+
+    public void removeFactura(Factura facturaAEliminar) {
+        this.facturas.remove(facturaAEliminar);
+        facturaAEliminar.setCliente(null);
+    }
+
     @Override
     public String toString() {
 
@@ -110,6 +145,8 @@ public class Cliente {
                 ", creadoEn = '" + creado + '\'' +
                 ", editadoEn = '" + editado + '\'' +
                 ", direcciones = '" + direcciones + '\'' +
+                ", facturas = '" + facturas + '\'' +
+                ", detalle = '" + clienteDetalle + '\'' +
                 '}';
     }
 

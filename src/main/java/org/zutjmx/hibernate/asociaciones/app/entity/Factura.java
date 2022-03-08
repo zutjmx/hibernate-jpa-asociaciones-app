@@ -2,6 +2,8 @@ package org.zutjmx.hibernate.asociaciones.app.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "facturas")
 public class Factura {
@@ -59,11 +61,20 @@ public class Factura {
 
     @Override
     public String toString() {
+        //", cliente = " + cliente +
         return "Datos :: Factura {" +
                 "id = " + id +
                 ", descripcion = '" + descripcion + '\'' +
                 ", total = " + total +
-                ", cliente = " + cliente +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Factura factura = (Factura) o;
+        return Objects.equals(id, factura.id) && Objects.equals(descripcion, factura.descripcion) && Objects.equals(total, factura.total);
+    }
+
 }
