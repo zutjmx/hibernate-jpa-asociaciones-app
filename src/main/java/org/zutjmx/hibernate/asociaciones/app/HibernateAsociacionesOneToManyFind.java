@@ -33,6 +33,11 @@ public class HibernateAsociacionesOneToManyFind {
 
             System.out.println(cliente);
 
+            entityManager.getTransaction().begin();
+            direccionUno = entityManager.find(Direccion.class,1L);
+            cliente.getDirecciones().remove(direccionUno);
+            entityManager.getTransaction().commit();
+            System.out.println(cliente);
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
             e.printStackTrace();
