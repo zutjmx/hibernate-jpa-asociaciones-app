@@ -9,6 +9,8 @@
         <class>org.zutjmx.hibernate.asociaciones.app.entity.Factura</class>
         <class>org.zutjmx.hibernate.asociaciones.app.entity.Direccion</class>
         <class>org.zutjmx.hibernate.asociaciones.app.entity.ClienteDetalle</class>
+        <class>org.zutjmx.hibernate.asociaciones.app.entity.Curso</class>
+        <class>org.zutjmx.hibernate.asociaciones.app.entity.Alumno</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
