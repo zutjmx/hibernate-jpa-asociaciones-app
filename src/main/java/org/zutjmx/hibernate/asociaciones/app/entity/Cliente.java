@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "clientes")
@@ -22,7 +24,9 @@ public class Cliente {
     @Embedded
     private Auditoria auditoria = new Auditoria();
 
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(/*fetch = FetchType.EAGER,*/
+            cascade = CascadeType.ALL,orphanRemoval = true
+    )
     //@JoinColumn(name = "id_cliente")
     @JoinTable(name = "tbl_clientes_direcciones",
             joinColumns = @JoinColumn(name = "id_cliente"),
@@ -30,7 +34,10 @@ public class Cliente {
             uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
     private List<Direccion> direcciones;
 
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "cliente")
+    @OneToMany(/*fetch = FetchType.EAGER,*/
+            cascade = CascadeType.ALL,orphanRemoval = true,
+            mappedBy = "cliente"
+    )
     private List<Factura> facturas;
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "cliente")
