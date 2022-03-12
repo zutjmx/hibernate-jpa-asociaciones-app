@@ -90,3 +90,7 @@ INSERT INTO tbl_clientes_direcciones (id_cliente, id_direccion) VALUES (21, 22);
 INSERT INTO clientes_detalles (id, prime, puntos_acumulados, cliente_detalle_id) VALUES (1, b'1', 15000, 21);
 INSERT INTO tbl_alumnos_cursos (alumno_id, curso_id) VALUES (20, 3);
 INSERT INTO tbl_alumnos_cursos (alumno_id, curso_id) VALUES (20, 20);
+INSERT INTO facturas (id, descripcion, total, id_cliente) VALUES (1, 'Compra de Laptop', 19999, 19);
+INSERT INTO facturas (id, descripcion, total, id_cliente) VALUES (2, 'Boleto de avión a Huatulco', 2500, 19);
+INSERT INTO facturas (id, descripcion, total, id_cliente) VALUES (3, 'Equipo de gimnasio', 8500, 7);
+INSERT INTO facturas (id, descripcion, total, id_cliente) VALUES (4, 'Vestido de diseñador', 4800, 7);
